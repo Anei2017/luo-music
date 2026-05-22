@@ -1,5 +1,37 @@
 # Push fix + redeploy on Vercel
 
+## FASTEST FIX (no git) — do this first
+
+1. **Vercel** → your project → **Settings** → **General**
+2. **Build Command** → turn on **Override** → type: `npm run build`
+3. **Environment Variables** (Production) — add if missing:
+   - `NEXT_PUBLIC_CONVEX_URL` = `https://peaceful-platypus-862.convex.cloud`
+   - `NEXT_PUBLIC_CONVEX_SITE_URL` = `https://peaceful-platypus-862.convex.site`
+4. **Deployments** → **Redeploy** (uncheck build cache)
+
+That skips the failing `npx convex deploy` step.
+
+---
+
+## Or fix on GitHub (for repo `luo-music-2026`)
+
+1. Open https://github.com/Anei2017/luo-music-2026/blob/main/vercel.json → **Edit**
+2. Replace contents with:
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npm run build"
+}
+```
+
+3. **Commit changes** → Vercel will auto-redeploy
+
+---
+
+## Or push from Terminal
+
 Copy and run these commands in **Terminal** (one block at a time).
 
 ## 1. Fix is in vercel.json (npm run build only)
@@ -8,11 +40,11 @@ Copy and run these commands in **Terminal** (one block at a time).
 
 ```bash
 cd ~/Downloads/luo-music-main
-git checkout main
-git add vercel.json README.md FIX-VERCEL.md PUSH-AND-DEPLOY.md
-git commit -m "Fix Vercel: npm run build only (no convex deploy on Vercel)"
+git pull origin main --rebase
 git push origin main
 ```
+
+(The vercel.json fix is already committed locally as `b180219`.)
 
 **If Vercel uses `luo-music-2026` instead of `luo-music`:**
 
