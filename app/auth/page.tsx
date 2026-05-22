@@ -60,10 +60,11 @@ export default function AuthPage() {
       <div className="hidden md:flex md:w-1/2 bg-luo-yellow text-black relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1400&q=80&auto=format&fit=crop"
-            alt=""
-            className="w-full h-full object-cover opacity-25 mix-blend-multiply"
+            src="/img/luo-women.png"
+            alt="Two young women in traditional Luo attire"
+            className="w-full h-full object-cover object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-tr from-luo-yellow/85 via-luo-yellow/30 to-transparent" />
         </div>
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           <Link href="/" className="flex items-center gap-2 w-fit">
