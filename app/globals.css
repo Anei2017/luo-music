@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --luo-black: #0d0d0d;
+  --luo-ink: #1a1a1a;
+  --luo-yellow: #facc15;
+  --luo-yellow-bright: #fde047;
+  --luo-red: #ef233c;
+  --luo-green: #22c55e;
+  --luo-cream: #fef9e7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--luo-black);
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--luo-yellow); }
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-luo-red
+           text-white font-bold uppercase tracking-wide rounded-sm
+           hover:bg-red-600 active:scale-[0.98] transition-all
+           shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-[6px_6px_0_0_rgba(0,0,0,1)] hover:-translate-y-0.5;
+  }
+
+  .btn-yellow {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-luo-yellow
+           text-black font-bold uppercase tracking-wide rounded-sm
+           hover:bg-luo-yellow-bright active:scale-[0.98] transition-all
+           shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-[6px_6px_0_0_rgba(0,0,0,1)] hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white
+           text-white font-bold uppercase tracking-wide rounded-sm
+           hover:bg-white hover:text-black transition-all;
+  }
+
+  .btn-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-sm
+           text-white/70 hover:text-luo-yellow hover:bg-white/5 transition-all;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-luo-ink border border-white/10 rounded-sm transition-all
+           hover:border-luo-yellow/60 hover:-translate-y-0.5
+           hover:shadow-[6px_6px_0_0_rgba(250,204,21,0.6)];
+  }
+
+  /* Forms */
+  .input {
+    @apply w-full px-4 py-3 bg-luo-ink border-2 border-white/10 rounded-sm
+           text-white placeholder-white/30 outline-none font-medium
+           focus:border-luo-yellow transition-all;
+  }
+
+  /* Highlighted label like "SWEAT" yellow block */
+  .label-block {
+    @apply inline-block px-3 py-1 bg-luo-yellow text-black font-display
+           uppercase text-sm tracking-wide;
+  }
+
+  .label-green {
+    @apply inline-block px-3 py-1 bg-luo-green text-black font-display
+           uppercase text-sm tracking-wide;
+  }
+
+  /* Display heading: huge, ultra-bold, slight negative tracking */
+  .h-display {
+    @apply font-display uppercase leading-[0.92] tracking-mega;
+  }
+
+  /* Diagonal stripe accent (used in hero footers, dividers) */
+  .stripe-accent {
+    background: linear-gradient(
+      to right,
+      var(--luo-yellow) 0%,
+      var(--luo-yellow) 70%,
+      var(--luo-green) 70%,
+      var(--luo-green) 100%
+    );
+  }
+}
+
+/* Animations */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-bar {
+  0%, 100% { transform: scaleY(0.4); }
+  50%      { transform: scaleY(1); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.animate-fade-in  { animation: fade-in 0.4s ease; }
+.animate-marquee  { animation: marquee 40s linear infinite; }
+
+.eq-bar {
+  width: 3px;
+  background: var(--luo-yellow);
+  border-radius: 1px;
+  animation: pulse-bar 0.9s ease-in-out infinite;
+}

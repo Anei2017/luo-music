@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env.local
+.env
+.env*.local
+convex/_generated/
+*.tsbuildinfo
+.DS_Store
+.vercel
